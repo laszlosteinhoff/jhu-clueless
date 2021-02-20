@@ -2,7 +2,7 @@
 
 A repository of Unity-based  Clue-Less Game for academic purposes!
 
-![](https://en.wikipedia.org/wiki/Cluedo#/media/File:Cluedo_Clue_pack_logo.png)
+![](https://upload.wikimedia.org/wikipedia/commons/4/4c/Cluedo_Clue_pack_logo.png)
 
 → `Domain-specific code! Will not work on its own but can be modified for other projects.`
 
