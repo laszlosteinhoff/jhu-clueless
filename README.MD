@@ -2,7 +2,7 @@
 
 A repository of Unity-based  Clue-Less Game for academic purposes!
 
-![](https://github.com/kevinklassen/jhu-clueless/blob/master/Game_Logo.png)
+![](https://github.com/kevinklassen/jhu-clueless/blob/master/Game_Logo.png = 300px)
 
 → `Domain-specific code! Will not work on its own but can be modified for other projects.`
 
