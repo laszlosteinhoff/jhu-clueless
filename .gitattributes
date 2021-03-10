@@ -1,5 +1,4 @@
 # Make sure that all large Unity file types are tracked by lfs to reduce repository size
-
 # 3D models
 *.3dm filter=lfs diff=lfs merge=lfs -text
 *.3ds filter=lfs diff=lfs merge=lfs -text
@@ -47,10 +46,10 @@
 *.tga filter=lfs diff=lfs merge=lfs -text
 *.tif filter=lfs diff=lfs merge=lfs -text
 *.tiff filter=lfs diff=lfs merge=lfs -text
-
 # Collapse all Unity-generated files on Github by default
 *.asset linguist-generated
 *.mat linguist-generated
 *.meta linguist-generated
 *.prefab linguist-generated
 *.unity linguist-generated
+Clueless/Assets/Plugins/** filter=lfs diff=lfs merge=lfs -text

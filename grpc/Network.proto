@@ -1,0 +1,19 @@
+syntax = "proto3";
+
+message RegisterRequest {
+	string name = 1;
+}
+
+message HeartbeatRequest {
+	int32 playerID = 1;
+}
+
+message HeartbeatResponse {
+	bool success = 1;
+	int32 count = 2;
+	string message = 3;
+}
+
+service NetworkService {
+	rpc heartbeat (HeartbeatRequest) returns (HeartbeatResponse);
+}
