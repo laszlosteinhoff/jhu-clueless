@@ -15,5 +15,5 @@ message HeartbeatResponse {
 }
 
 service NetworkService {
-	rpc heartbeat (HeartbeatRequest) returns (HeartbeatResponse);
+	rpc heartbeat (HeartbeatRequest) returns (stream HeartbeatResponse);
 }
