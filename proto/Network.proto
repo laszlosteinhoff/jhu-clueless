@@ -77,6 +77,15 @@ message GameUpdate {
   PlayerTurn turn = 7;
 }
 
+message GameHistory {
+  repeated GameUpdate updates = 1;
+}
+
+message Acknowledgement {
+  bool success = 1;
+  string message = 2;
+}
+
 message HeartbeatRequest {
 	int32 playerID = 1;
 }
@@ -88,5 +97,11 @@ message HeartbeatResponse {
 }
 
 service NetworkService {
+  rpc createGame (CreateGameRequest) returns (stream GameUpdate);
+  rpc connectToGame (ConnectRequest) returns (stream GameUpdate);
+  rpc startGame (StartGameRequest) returns (Acknowledgement);
+  rpc submitMove (Move) returns (Acknowledgement);
+  rpc disprove (DisproveRequest) returns (Acknowledgement);
+  rpc requestHistory (HistoryRequest) returns (GameHistory);
 	rpc heartbeat (HeartbeatRequest) returns (stream HeartbeatResponse);
 }
