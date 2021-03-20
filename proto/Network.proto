@@ -1,7 +1,80 @@
 syntax = "proto3";
 
-message RegisterRequest {
-	string name = 1;
+// CM_001
+message CreateGameRequest {
+  int32 playerID = 1;
+  string name = 2;
+}
+
+// CM_002
+message ConnectRequest {
+  int32 playerID = 1;
+  string name = 2;
+  int32 gameID = 3;
+}
+
+// CM_003
+message StartGameRequest {
+  int32 playerID = 1;
+  int32 gameID = 2;
+}
+
+// CM_004
+message Move {
+  int32 playerID = 1;
+  int32 location = 2;
+  int32 suspect = 3;
+  int32 weapon = 4;
+}
+
+// CM_005
+message DisproveRequest {
+  int32 playerID = 1;
+  int32 gameID = 2;
+  int32 card = 3;
+}
+
+// CM_006
+message HistoryRequest {
+  int32 playerID = 1;
+  int32 gameID = 2;
+}
+
+// SM_001A
+message InitiateGame {
+  repeated int32 cards = 1;
+  int32 character = 2;
+}
+
+// SM_001B
+message PromptToDisprove {
+  repeated int32 cards = 1;
+}
+
+// SM_001C
+message PlayerTurn {
+  int32 playerID = 1;
+  int32 room = 2;
+  int32 suspect = 3;
+  int32 weapon = 4;
+  int32 disproven = 5;
+  int32 disprovingPlayer = 6;
+}
+
+// SM_001
+message GameUpdate {
+  int32 gameID = 1;
+  int32 playerID = 2;
+  int32 number = 3;
+  enum Type {
+    INITIATE = 0;
+    PROMPT = 1;
+    TURN = 2;
+  }
+  Type type = 4;
+  InitiateGame initiate = 5;
+  PromptToDisprove prompt = 6;
+  PlayerTurn turn = 7;
 }
 
 message HeartbeatRequest {
