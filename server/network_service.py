@@ -12,22 +12,50 @@ class NetworkGrpcService(Network_pb2_grpc.NetworkServiceServicer):
     def __init__(self):
         self.users = {}
 
-    def heartbeat(self, request, context):
+    def createGame(self, request, context):
 
-        print("Heartbeat request received")
-
-        # If this is a new user ID, add them to the dict and start their count at 0
-        if request.playerID not in self.users.keys():
-            self.users[request.playerID] = 0
+        print("Create game request received")
 
         try:
             while True:
                 sleep(5)
                 self.users[request.playerID] += 1
-                print("Yielding again")
-                yield Network_pb2.HeartbeatResponse(success=True, count=self.users[request.playerID], message="Success")
+                yield Network_pb2.GameUpdate()
         except:
             print("Exception, dropped out")
+
+    def connectToGame(self, request, context):
+
+        print("Create game request received")
+
+        try:
+            while True:
+                sleep(5)
+                self.users[request.playerID] += 1
+                yield Network_pb2.GameUpdate()
+        except:
+            print("Exception, dropped out")
+
+    def startGame(self, request, context):
+        print("Received start game request: " + str(request))
+        return Network_pb2.Acknowledgement(success=True, message="Received request: " + str(request))
+
+    def submitMove(self, request, context):
+        print("Received submit move request: " + str(request))
+        return Network_pb2.Acknowledgement(success=True, message="Received request: " + str(request))
+
+    def disprove(self, request, context):
+        print("Received disprove request: " + str(request))
+        return Network_pb2.Acknowledgement(success=True, message="Received request: " + str(request))
+
+    def requestHistory(self, request, context):
+        print("Received game history request: " + str(request))
+        game_history = Network_pb2.GameHistory()
+        sample_update = Network_pb2.GameUpdate(gameID=1, playerID=1, number=1,
+                                               type=Network_pb2.GameUpdate.Type.INITIATE)
+        game_history.updates.extend([sample_update])
+        return Network_pb2.GameHistory()
+
 
 
 def serve():

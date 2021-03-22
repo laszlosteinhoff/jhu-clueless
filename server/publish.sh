@@ -1,0 +1,1 @@
+scp -r ../server/ ec2-34-220-213-135.us-west-2.compute.amazonaws.com:/opt/clueless-server
