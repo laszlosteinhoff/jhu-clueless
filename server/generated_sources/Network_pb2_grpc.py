@@ -14,17 +14,72 @@ class NetworkServiceStub(object):
         Args:
             channel: A grpc.Channel.
         """
-        self.heartbeat = channel.unary_stream(
-                '/NetworkService/heartbeat',
-                request_serializer=Network__pb2.HeartbeatRequest.SerializeToString,
-                response_deserializer=Network__pb2.HeartbeatResponse.FromString,
+        self.createGame = channel.unary_stream(
+                '/NetworkService/createGame',
+                request_serializer=Network__pb2.CreateGameRequest.SerializeToString,
+                response_deserializer=Network__pb2.GameUpdate.FromString,
+                )
+        self.connectToGame = channel.unary_stream(
+                '/NetworkService/connectToGame',
+                request_serializer=Network__pb2.ConnectRequest.SerializeToString,
+                response_deserializer=Network__pb2.GameUpdate.FromString,
+                )
+        self.startGame = channel.unary_unary(
+                '/NetworkService/startGame',
+                request_serializer=Network__pb2.StartGameRequest.SerializeToString,
+                response_deserializer=Network__pb2.Acknowledgement.FromString,
+                )
+        self.submitMove = channel.unary_unary(
+                '/NetworkService/submitMove',
+                request_serializer=Network__pb2.Move.SerializeToString,
+                response_deserializer=Network__pb2.Acknowledgement.FromString,
+                )
+        self.disprove = channel.unary_unary(
+                '/NetworkService/disprove',
+                request_serializer=Network__pb2.DisproveRequest.SerializeToString,
+                response_deserializer=Network__pb2.Acknowledgement.FromString,
+                )
+        self.requestHistory = channel.unary_unary(
+                '/NetworkService/requestHistory',
+                request_serializer=Network__pb2.HistoryRequest.SerializeToString,
+                response_deserializer=Network__pb2.GameHistory.FromString,
                 )
 
 
 class NetworkServiceServicer(object):
     """Missing associated documentation comment in .proto file."""
 
-    def heartbeat(self, request, context):
+    def createGame(self, request, context):
+        """Missing associated documentation comment in .proto file."""
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+    def connectToGame(self, request, context):
+        """Missing associated documentation comment in .proto file."""
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+    def startGame(self, request, context):
+        """Missing associated documentation comment in .proto file."""
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+    def submitMove(self, request, context):
+        """Missing associated documentation comment in .proto file."""
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+    def disprove(self, request, context):
+        """Missing associated documentation comment in .proto file."""
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+    def requestHistory(self, request, context):
         """Missing associated documentation comment in .proto file."""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
@@ -33,10 +88,35 @@ class NetworkServiceServicer(object):
 
 def add_NetworkServiceServicer_to_server(servicer, server):
     rpc_method_handlers = {
-            'heartbeat': grpc.unary_stream_rpc_method_handler(
-                    servicer.heartbeat,
-                    request_deserializer=Network__pb2.HeartbeatRequest.FromString,
-                    response_serializer=Network__pb2.HeartbeatResponse.SerializeToString,
+            'createGame': grpc.unary_stream_rpc_method_handler(
+                    servicer.createGame,
+                    request_deserializer=Network__pb2.CreateGameRequest.FromString,
+                    response_serializer=Network__pb2.GameUpdate.SerializeToString,
+            ),
+            'connectToGame': grpc.unary_stream_rpc_method_handler(
+                    servicer.connectToGame,
+                    request_deserializer=Network__pb2.ConnectRequest.FromString,
+                    response_serializer=Network__pb2.GameUpdate.SerializeToString,
+            ),
+            'startGame': grpc.unary_unary_rpc_method_handler(
+                    servicer.startGame,
+                    request_deserializer=Network__pb2.StartGameRequest.FromString,
+                    response_serializer=Network__pb2.Acknowledgement.SerializeToString,
+            ),
+            'submitMove': grpc.unary_unary_rpc_method_handler(
+                    servicer.submitMove,
+                    request_deserializer=Network__pb2.Move.FromString,
+                    response_serializer=Network__pb2.Acknowledgement.SerializeToString,
+            ),
+            'disprove': grpc.unary_unary_rpc_method_handler(
+                    servicer.disprove,
+                    request_deserializer=Network__pb2.DisproveRequest.FromString,
+                    response_serializer=Network__pb2.Acknowledgement.SerializeToString,
+            ),
+            'requestHistory': grpc.unary_unary_rpc_method_handler(
+                    servicer.requestHistory,
+                    request_deserializer=Network__pb2.HistoryRequest.FromString,
+                    response_serializer=Network__pb2.GameHistory.SerializeToString,
             ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
@@ -49,7 +129,7 @@ class NetworkService(object):
     """Missing associated documentation comment in .proto file."""
 
     @staticmethod
-    def heartbeat(request,
+    def createGame(request,
             target,
             options=(),
             channel_credentials=None,
@@ -59,8 +139,93 @@ class NetworkService(object):
             wait_for_ready=None,
             timeout=None,
             metadata=None):
-        return grpc.experimental.unary_stream(request, target, '/NetworkService/heartbeat',
-            Network__pb2.HeartbeatRequest.SerializeToString,
-            Network__pb2.HeartbeatResponse.FromString,
+        return grpc.experimental.unary_stream(request, target, '/NetworkService/createGame',
+            Network__pb2.CreateGameRequest.SerializeToString,
+            Network__pb2.GameUpdate.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+
+    @staticmethod
+    def connectToGame(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_stream(request, target, '/NetworkService/connectToGame',
+            Network__pb2.ConnectRequest.SerializeToString,
+            Network__pb2.GameUpdate.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+
+    @staticmethod
+    def startGame(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(request, target, '/NetworkService/startGame',
+            Network__pb2.StartGameRequest.SerializeToString,
+            Network__pb2.Acknowledgement.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+
+    @staticmethod
+    def submitMove(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(request, target, '/NetworkService/submitMove',
+            Network__pb2.Move.SerializeToString,
+            Network__pb2.Acknowledgement.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+
+    @staticmethod
+    def disprove(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(request, target, '/NetworkService/disprove',
+            Network__pb2.DisproveRequest.SerializeToString,
+            Network__pb2.Acknowledgement.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+
+    @staticmethod
+    def requestHistory(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(request, target, '/NetworkService/requestHistory',
+            Network__pb2.HistoryRequest.SerializeToString,
+            Network__pb2.GameHistory.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)

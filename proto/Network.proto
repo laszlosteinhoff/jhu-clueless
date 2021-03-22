@@ -86,16 +86,6 @@ message Acknowledgement {
   string message = 2;
 }
 
-message HeartbeatRequest {
-	int32 playerID = 1;
-}
-
-message HeartbeatResponse {
-	bool success = 1;
-	int32 count = 2;
-	string message = 3;
-}
-
 service NetworkService {
   rpc createGame (CreateGameRequest) returns (stream GameUpdate);
   rpc connectToGame (ConnectRequest) returns (stream GameUpdate);
@@ -103,5 +93,4 @@ service NetworkService {
   rpc submitMove (Move) returns (Acknowledgement);
   rpc disprove (DisproveRequest) returns (Acknowledgement);
   rpc requestHistory (HistoryRequest) returns (GameHistory);
-	rpc heartbeat (HeartbeatRequest) returns (stream HeartbeatResponse);
 }
