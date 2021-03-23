@@ -5,7 +5,7 @@ using Grpc.Core;
 
 public class NetworkManager : MonoBehaviour
 {
-    private string host = "ec2-34-220-213-135.us-west-2.compute.amazonaws.com:50051";
+    private string host = "clueless.ideologyhole.com:50051";
     private Channel channel;
     private NetworkService.NetworkServiceClient client;
 
