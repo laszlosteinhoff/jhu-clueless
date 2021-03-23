@@ -22,6 +22,7 @@ class NetworkGrpcService(Network_pb2_grpc.NetworkServiceServicer):
     def createGame(self, request, context):
 
         print("Create game request received")
+        self.__get_account(request.playerID)
 
         try:
             while True:
@@ -35,6 +36,7 @@ class NetworkGrpcService(Network_pb2_grpc.NetworkServiceServicer):
     def connectToGame(self, request, context):
 
         print("Create game request received")
+        self.__get_account(request.playerID)
 
         try:
             while True:
@@ -53,16 +55,19 @@ class NetworkGrpcService(Network_pb2_grpc.NetworkServiceServicer):
     # Validate, record, and react to the actions of a player turn
     def submitMove(self, request, context):
         print("Received submit move request: " + str(request))
+        self.__get_account(request.playerID)
         return Network_pb2.Acknowledgement(success=True, message="Received request: " + str(request))
 
     # Process a player's request to disprove one of the suggestions
     def disprove(self, request, context):
         print("Received disprove request: " + str(request))
+        self.__get_account(request.playerID)
         return Network_pb2.Acknowledgement(success=True, message="Received request: " + str(request))
 
     # Return the full history for a game so far if the player is allowed to see it
     def requestHistory(self, request, context):
         print("Received game history request: " + str(request))
+        self.__get_account(request.playerID)
         game_history = Network_pb2.GameHistory()
         sample_update = Network_pb2.GameUpdate(gameID=1, playerID=1, number=1,
                                                type=Network_pb2.GameUpdate.Type.INITIATE)
