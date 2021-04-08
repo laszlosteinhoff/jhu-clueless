@@ -1,3 +1,5 @@
+USE clueless;
+
 DROP TABLE IF EXISTS move;
 DROP TABLE IF EXISTS player_card;
 DROP TABLE IF EXISTS player;

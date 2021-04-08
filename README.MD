@@ -35,6 +35,20 @@ Pull requests are welcome. For major changes, please open an issue first to disc
 
 Please make sure to update tests as appropriate.
 
+## Setting up for testing
+
+1. Install mysql on your system. https://dev.mysql.com/doc/mysql-installation-excerpt/5.7/en/
+2. Connect to mysql as the root user you set up: `mysql -u root -p` (or use whatever db tool you prefer)
+3. Create the clueless database: `> CREATE DATABASE clueless;`
+4. Add the clueless application mysql user: `> GRANT ALL PRIVILEGES ON *.* TO 'clueless'@'localhost' IDENTIFIED BY 'Password1';`
+5. Create all of the tables by running the commands from 'create_tables.sql'
+6. Make sure you have python 3 and pip installed. As a bonus, I highly recommend setting up a virtual environment to install things into.
+Haven't read this page so I hope it's the right thing, but it seems useful: https://packaging.python.org/guides/installing-using-pip-and-virtual-environments/
+7. Install the python requirements: `pip install -r requirements.txt` (from inside the server directory)
+8. If that didn't work... it's probably mysql causing the issues. You might need to install some other stuff and unfortunately I don't know what but let me know if I can help.
+9. Run the server: `python3 network_service.py`
+10. Make sure in the Unity 'NetworkManager' class the host is set to 'localhost:50051'
+11. You should be good! Everything is running local
 
 ## License
 [MIT](https://choosealicense.com/licenses/mit/)
