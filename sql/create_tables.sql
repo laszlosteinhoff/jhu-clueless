@@ -14,8 +14,8 @@ CREATE TABLE IF NOT EXISTS account(
 );
 
 CREATE TABLE IF NOT EXISTS card(
-    id INT NOT NULL AUTO_INCREMENT,
-    type ENUM('weapon', 'suspect', 'room') NOT NULL,
+    id INT NOT NULL,
+    card_type ENUM('weapon', 'suspect', 'room') NOT NULL,
     PRIMARY KEY (id)
 );
 
