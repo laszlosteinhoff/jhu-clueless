@@ -65,7 +65,6 @@ public class NetworkManager : MonoBehaviour
     private void LogAcknowledgement(Acknowledgement response)
     {
         count++;
-        logText.SetText("Response (" + count + "): " + response);
     }
 
     // Example of an ongoing stream of replies from the demo heartbeat method
@@ -76,6 +75,7 @@ public class NetworkManager : MonoBehaviour
         while (await stream.MoveNext())
         {
             // Handle any incoming game updates here
+            logText.SetText("Response (" + count + "): " + stream.Current.ToString());
         }
     }
 

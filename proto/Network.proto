@@ -59,6 +59,7 @@ message PlayerTurn {
   int32 weapon = 4;
   int32 disproven = 5;
   int32 disprovingPlayer = 6;
+  int32 location = 7;
 }
 
 // SM_001

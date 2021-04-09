@@ -32,24 +32,24 @@ public static partial class NetworkReflection {
           "ASgFEgwKBGNhcmQYAyABKAUiMgoOSGlzdG9yeVJlcXVlc3QSEAoIcGxheWVy",
           "SUQYASABKAUSDgoGZ2FtZUlEGAIgASgFIjAKDEluaXRpYXRlR2FtZRINCgVj",
           "YXJkcxgBIAMoBRIRCgljaGFyYWN0ZXIYAiABKAUiIQoQUHJvbXB0VG9EaXNw",
-          "cm92ZRINCgVjYXJkcxgBIAMoBSJ6CgpQbGF5ZXJUdXJuEhAKCHBsYXllcklE",
-          "GAEgASgFEgwKBHJvb20YAiABKAUSDwoHc3VzcGVjdBgDIAEoBRIOCgZ3ZWFw",
-          "b24YBCABKAUSEQoJZGlzcHJvdmVuGAUgASgFEhgKEGRpc3Byb3ZpbmdQbGF5",
-          "ZXIYBiABKAUi6QEKCkdhbWVVcGRhdGUSDgoGZ2FtZUlEGAEgASgFEhAKCHBs",
-          "YXllcklEGAIgASgFEg4KBm51bWJlchgDIAEoBRIeCgR0eXBlGAQgASgOMhAu",
-          "R2FtZVVwZGF0ZS5UeXBlEh8KCGluaXRpYXRlGAUgASgLMg0uSW5pdGlhdGVH",
-          "YW1lEiEKBnByb21wdBgGIAEoCzIRLlByb21wdFRvRGlzcHJvdmUSGQoEdHVy",
-          "bhgHIAEoCzILLlBsYXllclR1cm4iKgoEVHlwZRIMCghJTklUSUFURRAAEgoK",
-          "BlBST01QVBABEggKBFRVUk4QAiIrCgtHYW1lSGlzdG9yeRIcCgd1cGRhdGVz",
-          "GAEgAygLMgsuR2FtZVVwZGF0ZSIzCg9BY2tub3dsZWRnZW1lbnQSDwoHc3Vj",
-          "Y2VzcxgBIAEoCBIPCgdtZXNzYWdlGAIgASgJMqwCCg5OZXR3b3JrU2Vydmlj",
-          "ZRIvCgpjcmVhdGVHYW1lEhIuQ3JlYXRlR2FtZVJlcXVlc3QaCy5HYW1lVXBk",
-          "YXRlMAESLwoNY29ubmVjdFRvR2FtZRIPLkNvbm5lY3RSZXF1ZXN0GgsuR2Ft",
-          "ZVVwZGF0ZTABEjAKCXN0YXJ0R2FtZRIRLlN0YXJ0R2FtZVJlcXVlc3QaEC5B",
-          "Y2tub3dsZWRnZW1lbnQSJQoKc3VibWl0TW92ZRIFLk1vdmUaEC5BY2tub3ds",
-          "ZWRnZW1lbnQSLgoIZGlzcHJvdmUSEC5EaXNwcm92ZVJlcXVlc3QaEC5BY2tu",
-          "b3dsZWRnZW1lbnQSLwoOcmVxdWVzdEhpc3RvcnkSDy5IaXN0b3J5UmVxdWVz",
-          "dBoMLkdhbWVIaXN0b3J5YgZwcm90bzM="));
+          "cm92ZRINCgVjYXJkcxgBIAMoBSKMAQoKUGxheWVyVHVybhIQCghwbGF5ZXJJ",
+          "RBgBIAEoBRIMCgRyb29tGAIgASgFEg8KB3N1c3BlY3QYAyABKAUSDgoGd2Vh",
+          "cG9uGAQgASgFEhEKCWRpc3Byb3ZlbhgFIAEoBRIYChBkaXNwcm92aW5nUGxh",
+          "eWVyGAYgASgFEhAKCGxvY2F0aW9uGAcgASgFIukBCgpHYW1lVXBkYXRlEg4K",
+          "BmdhbWVJRBgBIAEoBRIQCghwbGF5ZXJJRBgCIAEoBRIOCgZudW1iZXIYAyAB",
+          "KAUSHgoEdHlwZRgEIAEoDjIQLkdhbWVVcGRhdGUuVHlwZRIfCghpbml0aWF0",
+          "ZRgFIAEoCzINLkluaXRpYXRlR2FtZRIhCgZwcm9tcHQYBiABKAsyES5Qcm9t",
+          "cHRUb0Rpc3Byb3ZlEhkKBHR1cm4YByABKAsyCy5QbGF5ZXJUdXJuIioKBFR5",
+          "cGUSDAoISU5JVElBVEUQABIKCgZQUk9NUFQQARIICgRUVVJOEAIiKwoLR2Ft",
+          "ZUhpc3RvcnkSHAoHdXBkYXRlcxgBIAMoCzILLkdhbWVVcGRhdGUiMwoPQWNr",
+          "bm93bGVkZ2VtZW50Eg8KB3N1Y2Nlc3MYASABKAgSDwoHbWVzc2FnZRgCIAEo",
+          "CTKsAgoOTmV0d29ya1NlcnZpY2USLwoKY3JlYXRlR2FtZRISLkNyZWF0ZUdh",
+          "bWVSZXF1ZXN0GgsuR2FtZVVwZGF0ZTABEi8KDWNvbm5lY3RUb0dhbWUSDy5D",
+          "b25uZWN0UmVxdWVzdBoLLkdhbWVVcGRhdGUwARIwCglzdGFydEdhbWUSES5T",
+          "dGFydEdhbWVSZXF1ZXN0GhAuQWNrbm93bGVkZ2VtZW50EiUKCnN1Ym1pdE1v",
+          "dmUSBS5Nb3ZlGhAuQWNrbm93bGVkZ2VtZW50Ei4KCGRpc3Byb3ZlEhAuRGlz",
+          "cHJvdmVSZXF1ZXN0GhAuQWNrbm93bGVkZ2VtZW50Ei8KDnJlcXVlc3RIaXN0",
+          "b3J5Eg8uSGlzdG9yeVJlcXVlc3QaDC5HYW1lSGlzdG9yeWIGcHJvdG8z"));
     descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
         new pbr::FileDescriptor[] { },
         new pbr::GeneratedClrTypeInfo(null, new pbr::GeneratedClrTypeInfo[] {
@@ -61,7 +61,7 @@ public static partial class NetworkReflection {
           new pbr::GeneratedClrTypeInfo(typeof(global::HistoryRequest), global::HistoryRequest.Parser, new[]{ "PlayerID", "GameID" }, null, null, null),
           new pbr::GeneratedClrTypeInfo(typeof(global::InitiateGame), global::InitiateGame.Parser, new[]{ "Cards", "Character" }, null, null, null),
           new pbr::GeneratedClrTypeInfo(typeof(global::PromptToDisprove), global::PromptToDisprove.Parser, new[]{ "Cards" }, null, null, null),
-          new pbr::GeneratedClrTypeInfo(typeof(global::PlayerTurn), global::PlayerTurn.Parser, new[]{ "PlayerID", "Room", "Suspect", "Weapon", "Disproven", "DisprovingPlayer" }, null, null, null),
+          new pbr::GeneratedClrTypeInfo(typeof(global::PlayerTurn), global::PlayerTurn.Parser, new[]{ "PlayerID", "Room", "Suspect", "Weapon", "Disproven", "DisprovingPlayer", "Location" }, null, null, null),
           new pbr::GeneratedClrTypeInfo(typeof(global::GameUpdate), global::GameUpdate.Parser, new[]{ "GameID", "PlayerID", "Number", "Type", "Initiate", "Prompt", "Turn" }, null, new[]{ typeof(global::GameUpdate.Types.Type) }, null),
           new pbr::GeneratedClrTypeInfo(typeof(global::GameHistory), global::GameHistory.Parser, new[]{ "Updates" }, null, null, null),
           new pbr::GeneratedClrTypeInfo(typeof(global::Acknowledgement), global::Acknowledgement.Parser, new[]{ "Success", "Message" }, null, null, null)
@@ -1455,6 +1455,7 @@ public sealed partial class PlayerTurn : pb::IMessage<PlayerTurn> {
     weapon_ = other.weapon_;
     disproven_ = other.disproven_;
     disprovingPlayer_ = other.disprovingPlayer_;
+    location_ = other.location_;
     _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
   }
 
@@ -1529,6 +1530,17 @@ public sealed partial class PlayerTurn : pb::IMessage<PlayerTurn> {
     }
   }
 
+  /// <summary>Field number for the "location" field.</summary>
+  public const int LocationFieldNumber = 7;
+  private int location_;
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  public int Location {
+    get { return location_; }
+    set {
+      location_ = value;
+    }
+  }
+
   [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
   public override bool Equals(object other) {
     return Equals(other as PlayerTurn);
@@ -1548,6 +1560,7 @@ public sealed partial class PlayerTurn : pb::IMessage<PlayerTurn> {
     if (Weapon != other.Weapon) return false;
     if (Disproven != other.Disproven) return false;
     if (DisprovingPlayer != other.DisprovingPlayer) return false;
+    if (Location != other.Location) return false;
     return Equals(_unknownFields, other._unknownFields);
   }
 
@@ -1560,6 +1573,7 @@ public sealed partial class PlayerTurn : pb::IMessage<PlayerTurn> {
     if (Weapon != 0) hash ^= Weapon.GetHashCode();
     if (Disproven != 0) hash ^= Disproven.GetHashCode();
     if (DisprovingPlayer != 0) hash ^= DisprovingPlayer.GetHashCode();
+    if (Location != 0) hash ^= Location.GetHashCode();
     if (_unknownFields != null) {
       hash ^= _unknownFields.GetHashCode();
     }
@@ -1597,6 +1611,10 @@ public sealed partial class PlayerTurn : pb::IMessage<PlayerTurn> {
       output.WriteRawTag(48);
       output.WriteInt32(DisprovingPlayer);
     }
+    if (Location != 0) {
+      output.WriteRawTag(56);
+      output.WriteInt32(Location);
+    }
     if (_unknownFields != null) {
       _unknownFields.WriteTo(output);
     }
@@ -1622,6 +1640,9 @@ public sealed partial class PlayerTurn : pb::IMessage<PlayerTurn> {
     }
     if (DisprovingPlayer != 0) {
       size += 1 + pb::CodedOutputStream.ComputeInt32Size(DisprovingPlayer);
+    }
+    if (Location != 0) {
+      size += 1 + pb::CodedOutputStream.ComputeInt32Size(Location);
     }
     if (_unknownFields != null) {
       size += _unknownFields.CalculateSize();
@@ -1651,6 +1672,9 @@ public sealed partial class PlayerTurn : pb::IMessage<PlayerTurn> {
     }
     if (other.DisprovingPlayer != 0) {
       DisprovingPlayer = other.DisprovingPlayer;
+    }
+    if (other.Location != 0) {
+      Location = other.Location;
     }
     _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
   }
@@ -1685,6 +1709,10 @@ public sealed partial class PlayerTurn : pb::IMessage<PlayerTurn> {
         }
         case 48: {
           DisprovingPlayer = input.ReadInt32();
+          break;
+        }
+        case 56: {
+          Location = input.ReadInt32();
           break;
         }
       }
