@@ -19,7 +19,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   syntax='proto3',
   serialized_options=None,
   create_key=_descriptor._internal_create_key,
-  serialized_pb=b'\n\rNetwork.proto\"3\n\x11\x43reateGameRequest\x12\x10\n\x08playerID\x18\x01 \x01(\x05\x12\x0c\n\x04name\x18\x02 \x01(\t\"@\n\x0e\x43onnectRequest\x12\x10\n\x08playerID\x18\x01 \x01(\x05\x12\x0c\n\x04name\x18\x02 \x01(\t\x12\x0e\n\x06gameID\x18\x03 \x01(\x05\"4\n\x10StartGameRequest\x12\x10\n\x08playerID\x18\x01 \x01(\x05\x12\x0e\n\x06gameID\x18\x02 \x01(\x05\"K\n\x04Move\x12\x10\n\x08playerID\x18\x01 \x01(\x05\x12\x10\n\x08location\x18\x02 \x01(\x05\x12\x0f\n\x07suspect\x18\x03 \x01(\x05\x12\x0e\n\x06weapon\x18\x04 \x01(\x05\"A\n\x0f\x44isproveRequest\x12\x10\n\x08playerID\x18\x01 \x01(\x05\x12\x0e\n\x06gameID\x18\x02 \x01(\x05\x12\x0c\n\x04\x63\x61rd\x18\x03 \x01(\x05\"2\n\x0eHistoryRequest\x12\x10\n\x08playerID\x18\x01 \x01(\x05\x12\x0e\n\x06gameID\x18\x02 \x01(\x05\"0\n\x0cInitiateGame\x12\r\n\x05\x63\x61rds\x18\x01 \x03(\x05\x12\x11\n\tcharacter\x18\x02 \x01(\x05\"!\n\x10PromptToDisprove\x12\r\n\x05\x63\x61rds\x18\x01 \x03(\x05\"z\n\nPlayerTurn\x12\x10\n\x08playerID\x18\x01 \x01(\x05\x12\x0c\n\x04room\x18\x02 \x01(\x05\x12\x0f\n\x07suspect\x18\x03 \x01(\x05\x12\x0e\n\x06weapon\x18\x04 \x01(\x05\x12\x11\n\tdisproven\x18\x05 \x01(\x05\x12\x18\n\x10\x64isprovingPlayer\x18\x06 \x01(\x05\"\xe9\x01\n\nGameUpdate\x12\x0e\n\x06gameID\x18\x01 \x01(\x05\x12\x10\n\x08playerID\x18\x02 \x01(\x05\x12\x0e\n\x06number\x18\x03 \x01(\x05\x12\x1e\n\x04type\x18\x04 \x01(\x0e\x32\x10.GameUpdate.Type\x12\x1f\n\x08initiate\x18\x05 \x01(\x0b\x32\r.InitiateGame\x12!\n\x06prompt\x18\x06 \x01(\x0b\x32\x11.PromptToDisprove\x12\x19\n\x04turn\x18\x07 \x01(\x0b\x32\x0b.PlayerTurn\"*\n\x04Type\x12\x0c\n\x08INITIATE\x10\x00\x12\n\n\x06PROMPT\x10\x01\x12\x08\n\x04TURN\x10\x02\"+\n\x0bGameHistory\x12\x1c\n\x07updates\x18\x01 \x03(\x0b\x32\x0b.GameUpdate\"3\n\x0f\x41\x63knowledgement\x12\x0f\n\x07success\x18\x01 \x01(\x08\x12\x0f\n\x07message\x18\x02 \x01(\t2\xac\x02\n\x0eNetworkService\x12/\n\ncreateGame\x12\x12.CreateGameRequest\x1a\x0b.GameUpdate0\x01\x12/\n\rconnectToGame\x12\x0f.ConnectRequest\x1a\x0b.GameUpdate0\x01\x12\x30\n\tstartGame\x12\x11.StartGameRequest\x1a\x10.Acknowledgement\x12%\n\nsubmitMove\x12\x05.Move\x1a\x10.Acknowledgement\x12.\n\x08\x64isprove\x12\x10.DisproveRequest\x1a\x10.Acknowledgement\x12/\n\x0erequestHistory\x12\x0f.HistoryRequest\x1a\x0c.GameHistoryb\x06proto3'
+  serialized_pb=b'\n\rNetwork.proto\"3\n\x11\x43reateGameRequest\x12\x10\n\x08playerID\x18\x01 \x01(\x05\x12\x0c\n\x04name\x18\x02 \x01(\t\"@\n\x0e\x43onnectRequest\x12\x10\n\x08playerID\x18\x01 \x01(\x05\x12\x0c\n\x04name\x18\x02 \x01(\t\x12\x0e\n\x06gameID\x18\x03 \x01(\x05\"4\n\x10StartGameRequest\x12\x10\n\x08playerID\x18\x01 \x01(\x05\x12\x0e\n\x06gameID\x18\x02 \x01(\x05\"K\n\x04Move\x12\x10\n\x08playerID\x18\x01 \x01(\x05\x12\x10\n\x08location\x18\x02 \x01(\x05\x12\x0f\n\x07suspect\x18\x03 \x01(\x05\x12\x0e\n\x06weapon\x18\x04 \x01(\x05\"A\n\x0f\x44isproveRequest\x12\x10\n\x08playerID\x18\x01 \x01(\x05\x12\x0e\n\x06gameID\x18\x02 \x01(\x05\x12\x0c\n\x04\x63\x61rd\x18\x03 \x01(\x05\"2\n\x0eHistoryRequest\x12\x10\n\x08playerID\x18\x01 \x01(\x05\x12\x0e\n\x06gameID\x18\x02 \x01(\x05\"0\n\x0cInitiateGame\x12\r\n\x05\x63\x61rds\x18\x01 \x03(\x05\x12\x11\n\tcharacter\x18\x02 \x01(\x05\"!\n\x10PromptToDisprove\x12\r\n\x05\x63\x61rds\x18\x01 \x03(\x05\"\x8c\x01\n\nPlayerTurn\x12\x10\n\x08playerID\x18\x01 \x01(\x05\x12\x0c\n\x04room\x18\x02 \x01(\x05\x12\x0f\n\x07suspect\x18\x03 \x01(\x05\x12\x0e\n\x06weapon\x18\x04 \x01(\x05\x12\x11\n\tdisproven\x18\x05 \x01(\x05\x12\x18\n\x10\x64isprovingPlayer\x18\x06 \x01(\x05\x12\x10\n\x08location\x18\x07 \x01(\x05\"\xe9\x01\n\nGameUpdate\x12\x0e\n\x06gameID\x18\x01 \x01(\x05\x12\x10\n\x08playerID\x18\x02 \x01(\x05\x12\x0e\n\x06number\x18\x03 \x01(\x05\x12\x1e\n\x04type\x18\x04 \x01(\x0e\x32\x10.GameUpdate.Type\x12\x1f\n\x08initiate\x18\x05 \x01(\x0b\x32\r.InitiateGame\x12!\n\x06prompt\x18\x06 \x01(\x0b\x32\x11.PromptToDisprove\x12\x19\n\x04turn\x18\x07 \x01(\x0b\x32\x0b.PlayerTurn\"*\n\x04Type\x12\x0c\n\x08INITIATE\x10\x00\x12\n\n\x06PROMPT\x10\x01\x12\x08\n\x04TURN\x10\x02\"+\n\x0bGameHistory\x12\x1c\n\x07updates\x18\x01 \x03(\x0b\x32\x0b.GameUpdate\"3\n\x0f\x41\x63knowledgement\x12\x0f\n\x07success\x18\x01 \x01(\x08\x12\x0f\n\x07message\x18\x02 \x01(\t2\xac\x02\n\x0eNetworkService\x12/\n\ncreateGame\x12\x12.CreateGameRequest\x1a\x0b.GameUpdate0\x01\x12/\n\rconnectToGame\x12\x0f.ConnectRequest\x1a\x0b.GameUpdate0\x01\x12\x30\n\tstartGame\x12\x11.StartGameRequest\x1a\x10.Acknowledgement\x12%\n\nsubmitMove\x12\x05.Move\x1a\x10.Acknowledgement\x12.\n\x08\x64isprove\x12\x10.DisproveRequest\x1a\x10.Acknowledgement\x12/\n\x0erequestHistory\x12\x0f.HistoryRequest\x1a\x0c.GameHistoryb\x06proto3'
 )
 
 
@@ -49,8 +49,8 @@ _GAMEUPDATE_TYPE = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   serialized_options=None,
-  serialized_start=787,
-  serialized_end=829,
+  serialized_start=806,
+  serialized_end=848,
 )
 _sym_db.RegisterEnumDescriptor(_GAMEUPDATE_TYPE)
 
@@ -438,6 +438,13 @@ _PLAYERTURN = _descriptor.Descriptor(
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='location', full_name='PlayerTurn.location', index=6,
+      number=7, type=5, cpp_type=1, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
   ],
   extensions=[
   ],
@@ -450,8 +457,8 @@ _PLAYERTURN = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=471,
-  serialized_end=593,
+  serialized_start=472,
+  serialized_end=612,
 )
 
 
@@ -525,8 +532,8 @@ _GAMEUPDATE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=596,
-  serialized_end=829,
+  serialized_start=615,
+  serialized_end=848,
 )
 
 
@@ -557,8 +564,8 @@ _GAMEHISTORY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=831,
-  serialized_end=874,
+  serialized_start=850,
+  serialized_end=893,
 )
 
 
@@ -596,8 +603,8 @@ _ACKNOWLEDGEMENT = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=876,
-  serialized_end=927,
+  serialized_start=895,
+  serialized_end=946,
 )
 
 _GAMEUPDATE.fields_by_name['type'].enum_type = _GAMEUPDATE_TYPE
@@ -713,8 +720,8 @@ _NETWORKSERVICE = _descriptor.ServiceDescriptor(
   index=0,
   serialized_options=None,
   create_key=_descriptor._internal_create_key,
-  serialized_start=930,
-  serialized_end=1230,
+  serialized_start=949,
+  serialized_end=1249,
   methods=[
   _descriptor.MethodDescriptor(
     name='createGame',

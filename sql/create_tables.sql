@@ -38,14 +38,14 @@ CREATE TABLE IF NOT EXISTS player(
     name VARCHAR(40) NOT NULL,
     FOREIGN KEY (account_id) REFERENCES account(id),
     FOREIGN KEY (game_id) REFERENCES game(id),
-    CONSTRAINT UC_account_game UNIQUE (account_id, game_id),
-    PRIMARY KEY (id)
+    PRIMARY KEY (account_id, game_id),
 );
 
 CREATE TABLE IF NOT EXISTS player_card(
-    player_id INT NOT NULL,
+    account_id INT NOT NULL,
+    game_id INT NOT NULL,
     card_id INT NOT NULL,
-    FOREIGN KEY (player_id) REFERENCES player(id),
+    FOREIGN KEY (account_id, game_id) REFERENCES player(account_id, game_id),
     FOREIGN KEY (card_id) REFERENCES card(id)
 );
 
