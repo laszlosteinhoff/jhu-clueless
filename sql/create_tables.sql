@@ -32,24 +32,25 @@ CREATE TABLE IF NOT EXISTS game(
 );
 
 CREATE TABLE IF NOT EXISTS player(
+    id INT NOT NULL AUTO_INCREMENT,
     account_id INT NOT NULL,
     game_id INT NOT NULL,
-    id INT NOT NULL,
+    number INT NOT NULL,
     name VARCHAR(40) NOT NULL,
     FOREIGN KEY (account_id) REFERENCES account(id),
     FOREIGN KEY (game_id) REFERENCES game(id),
-    PRIMARY KEY (account_id, game_id),
+    PRIMARY KEY (id)
 );
 
 CREATE TABLE IF NOT EXISTS player_card(
-    account_id INT NOT NULL,
-    game_id INT NOT NULL,
+    player_id INT NOT NULL,
     card_id INT NOT NULL,
-    FOREIGN KEY (account_id, game_id) REFERENCES player(account_id, game_id),
+    FOREIGN KEY (player_id) REFERENCES player(id),
     FOREIGN KEY (card_id) REFERENCES card(id)
 );
 
 CREATE TABLE IF NOT EXISTS move(
+    id INT NOT NULL AUTO_INCREMENT,
     player_id INT NOT NULL,
     number INT NOT NULL,
     location INT NOT NULL,
@@ -58,5 +59,6 @@ CREATE TABLE IF NOT EXISTS move(
     room_id INT NOT NULL,
     FOREIGN KEY (weapon_id) REFERENCES card(id),
     FOREIGN KEY (suspect_id) REFERENCES card(id),
-    FOREIGN KEY (room_id) REFERENCES card(id)
-)
+    FOREIGN KEY (room_id) REFERENCES card(id),
+    PRIMARY KEY (id)
+);

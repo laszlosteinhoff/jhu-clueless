@@ -2,13 +2,13 @@ import grpc
 import logging
 import queue
 from concurrent import futures
-from time import sleep
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 
 from generated_sources import Network_pb2_grpc
 from generated_sources import Network_pb2 as nw
-from models.Account import Account
+
+from models import Account
 
 
 # GRPC server implementation
@@ -85,8 +85,8 @@ class NetworkGrpcService(Network_pb2_grpc.NetworkServiceServicer):
                     nw.GameUpdate(gameID=1, playerID=player, number=1, type=nw.GameUpdate.TURN, turn=turn))
 
         # Check which player needs to disprove and send them the prompt
-        disprovingPlayer = 2
-        if disprovingPlayer in NetworkGrpcService.streams.keys():
+        disproving_player = 2
+        if disproving_player in NetworkGrpcService.streams.keys():
             NetworkGrpcService.streams[player].put(
                 nw.GameUpdate(gameID=1, playerID=player, number=1, type=nw.GameUpdate.PROMPT))
 
