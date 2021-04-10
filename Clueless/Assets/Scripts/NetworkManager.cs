@@ -13,6 +13,8 @@ public class NetworkManager : MonoBehaviour
     private NetworkService.NetworkServiceClient client;
     private int count;
 
+    public UIManager uiManager;
+
     private void Start()
     {
         count = 0;
@@ -27,6 +29,9 @@ public class NetworkManager : MonoBehaviour
     {
         Debug.Log("Sending create game request");
         HandleUpdates(client.createGame(new CreateGameRequest { PlayerID = 1, Name = "Demo" }));
+
+        // Switch the UI to wait for game start
+        uiManager.WaitingForStart();
     }
 
     public void ConnectToGame()
