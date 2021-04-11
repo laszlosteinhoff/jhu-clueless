@@ -98,10 +98,10 @@ class NetworkGrpcService(Network_pb2_grpc.NetworkServiceServicer):
         self.__get_account(request.playerID)
 
         # Pass on the disproven card to the player whose turn it was
+        player = self.session.query(Player).filter_by(id=request.playerID).first()# FIXME this should be the player whose turn it is
 
-        player = 1  # FIXME this should be the player whose turn it is
         if player in NetworkGrpcService.streams.keys():
-            NetworkGrpcService.streams[player].put(nw.GameUpdate(gameID=1, playerID=player, number=1, type=nw.GameUpdate.TURN))
+            NetworkGrpcService.streams[player].put(nw.GameUpdate(gameID= request.gameID, playerID=player.ID, number=1, type=nw.GameUpdate.TURN, turn=nw.PlayerTurn(disproven=request.card))
 
         return nw.Acknowledgement(success=True, message="Received request: " + str(request))
 
