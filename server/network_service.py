@@ -1,6 +1,7 @@
 import grpc
 import logging
 import queue
+import random
 from concurrent import futures
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
@@ -9,7 +10,8 @@ from generated_sources import Network_pb2_grpc
 from generated_sources import Network_pb2 as nw
 
 from models import Account
-
+from models import Game
+from models import Player
 
 # GRPC server implementation
 class NetworkGrpcService(Network_pb2_grpc.NetworkServiceServicer):
@@ -31,10 +33,24 @@ class NetworkGrpcService(Network_pb2_grpc.NetworkServiceServicer):
 
         ###
         # Code to create game and player entries goes here
+        game = Game(
+            status = GameStatus.CREATED,
+            suspect_id = random.randrange(start = 1, stop = 6, step = 1),
+            room_id = random.randrange(start = 7, stop = 15, step = 1),
+            weapon_id = random.randrange(start = 16, stop = 21, step = 1)
+        )
+        session.add(game)
 
-        player = 1  # FIXME this should be the newly created player object
+        player = Player(
+            account_id = account.id,
+            game_id = game.id,
+            number = 1,
+            name = request.name
+        )
+        session.add(player)
         ###
 
+        session.commit()
         return self.__stream_updates(player)
 
     # Connect user to pending or in-progress game and subscribe to all game updates
@@ -44,11 +60,23 @@ class NetworkGrpcService(Network_pb2_grpc.NetworkServiceServicer):
         account = self.__get_account(request.playerID)
 
         ###
-        # Code to fetch the existing game they are trying to join and create new player entry goes here
-
-        player = 2  # FIXME this should be the newly created player object
+        # Code to players in the existing game they are trying to join
+        players = self.session.query(Players).filter_by(game_id = request.gameID)
+        if len(players) < 7:
+            # create new player
+            player = Player(
+                account_id = account.id,
+                game_id = request.gameID,
+                number = 1,
+                name = request.name
+            )
+            # add player to session
+            session.add(player)
+        else:
+            print("The game is already filled!")
         ###
 
+        session.commit()
         return self.__stream_updates(player)
 
     # Move a pending game to in-progress once enough players are connected
@@ -58,14 +86,20 @@ class NetworkGrpcService(Network_pb2_grpc.NetworkServiceServicer):
 
         ###
         # Switch game status to started, fetch all players, and send them the initiate message
-
-        players = [1, 2]  # FIXME this will be the list of players queried from the database
+        players = self.session.query(Players).filter_by(game_id = request.gameID)
+        game = self.session.query(Game).filter_by(id = request.gameID).first()
+        game.status = GameStatus.STARTED
 
         for player in players:
-            # FIXME this is just a test message with hard coded values, it should be replaced
             if player in NetworkGrpcService.streams.keys():
                 NetworkGrpcService.streams[player].put(
-                    nw.GameUpdate(gameID=1, playerID=player, number=1, type=nw.GameUpdate.INITIATE))
+                    nw.GameUpdate(
+                        gameID = request.gameID,
+                        playerID = player,
+                        number = 1,
+                        type = nw.GameUpdate.INITIATE
+                    )
+                )
 
         return nw.Acknowledgement(success=True, message="Received request: " + str(request))
 
@@ -122,6 +156,7 @@ class NetworkGrpcService(Network_pb2_grpc.NetworkServiceServicer):
     # This registers a new queue to send messages to this player into the streams dictionary, and then sets
     # up a loop to forward game updates on to that player when they appear in the queue
     def __stream_updates(self, player):
+        yield nw.GameUpdate(playerID=player.id)
         # Create a queue that will be passed any updates to forward to the client
         update_queue = queue.Queue()
         # Add queue to dictionary of active connections, keyed by game and player ID
