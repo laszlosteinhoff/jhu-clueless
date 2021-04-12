@@ -40,10 +40,16 @@ message HistoryRequest {
   int32 gameID = 2;
 }
 
+message PlayerCharacter {
+  int32 playerID = 1;
+  int32 character = 2;
+  string name = 3;
+}
+
 // SM_001A
 message InitiateGame {
   repeated int32 cards = 1;
-  int32 character = 2;
+  repeated PlayerCharacter characters = 2;
 }
 
 // SM_001B
@@ -71,6 +77,8 @@ message GameUpdate {
     INITIATE = 0;
     PROMPT = 1;
     TURN = 2;
+    CONNECT = 3;
+    NEXTTURN = 4;
   }
   Type type = 4;
   InitiateGame initiate = 5;
@@ -87,6 +95,16 @@ message Acknowledgement {
   string message = 2;
 }
 
+message Accusation {
+  int32 playerId = 1;
+  bool isAccusing = 2;
+  Move accusation = 3;
+}
+
+message AccusationResponse {
+  bool correct = 1;
+}
+
 service NetworkService {
   rpc createGame (CreateGameRequest) returns (stream GameUpdate);
   rpc connectToGame (ConnectRequest) returns (stream GameUpdate);
@@ -94,4 +112,5 @@ service NetworkService {
   rpc submitMove (Move) returns (Acknowledgement);
   rpc disprove (DisproveRequest) returns (Acknowledgement);
   rpc requestHistory (HistoryRequest) returns (GameHistory);
+  rpc accuse (Accusation) returns (Acknowledgement);
 }

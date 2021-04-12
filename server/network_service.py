@@ -12,6 +12,8 @@ from generated_sources import Network_pb2 as nw
 from models import Account
 from models import Game
 from models import Player
+from models import GameStatus
+
 
 # GRPC server implementation
 class NetworkGrpcService(Network_pb2_grpc.NetworkServiceServicer):
@@ -39,7 +41,7 @@ class NetworkGrpcService(Network_pb2_grpc.NetworkServiceServicer):
             room_id = random.randrange(start = 7, stop = 15, step = 1),
             weapon_id = random.randrange(start = 16, stop = 21, step = 1)
         )
-        session.add(game)
+        self.session.add(game)
 
         player = Player(
             account_id = account.id,
@@ -47,10 +49,10 @@ class NetworkGrpcService(Network_pb2_grpc.NetworkServiceServicer):
             number = 1,
             name = request.name
         )
-        session.add(player)
+        self.session.add(player)
         ###
 
-        session.commit()
+        self.session.commit()
         return self.__stream_updates(player)
 
     # Connect user to pending or in-progress game and subscribe to all game updates
@@ -61,7 +63,7 @@ class NetworkGrpcService(Network_pb2_grpc.NetworkServiceServicer):
 
         ###
         # Code to players in the existing game they are trying to join
-        players = self.session.query(Players).filter_by(game_id = request.gameID)
+        players = self.session.query(Player).filter_by(game_id = request.gameID)
         if len(players) < 7:
             # create new player
             player = Player(
@@ -71,12 +73,12 @@ class NetworkGrpcService(Network_pb2_grpc.NetworkServiceServicer):
                 name = request.name
             )
             # add player to session
-            session.add(player)
+            self.session.add(player)
         else:
             print("The game is already filled!")
         ###
 
-        session.commit()
+        self.session.commit()
         return self.__stream_updates(player)
 
     # Move a pending game to in-progress once enough players are connected
@@ -86,7 +88,7 @@ class NetworkGrpcService(Network_pb2_grpc.NetworkServiceServicer):
 
         ###
         # Switch game status to started, fetch all players, and send them the initiate message
-        players = self.session.query(Players).filter_by(game_id = request.gameID)
+        players = self.session.query(Player).filter_by(game_id = request.gameID)
         game = self.session.query(Game).filter_by(id = request.gameID).first()
         game.status = GameStatus.STARTED
 
@@ -135,9 +137,19 @@ class NetworkGrpcService(Network_pb2_grpc.NetworkServiceServicer):
         player = self.session.query(Player).filter_by(id=request.playerID).first()# FIXME this should be the player whose turn it is
 
         if player in NetworkGrpcService.streams.keys():
-            NetworkGrpcService.streams[player].put(nw.GameUpdate(gameID= request.gameID, playerID=player.ID, number=1, type=nw.GameUpdate.TURN, turn=nw.PlayerTurn(disproven=request.card))
+            NetworkGrpcService.streams[player].put(nw.GameUpdate(
+                gameID= request.gameID,
+                playerID=player.ID,
+                number=1,
+                type=nw.GameUpdate.TURN,
+                turn=nw.PlayerTurn(disproven=request.card)))
 
         return nw.Acknowledgement(success=True, message="Received request: " + str(request))
+
+    def accuse(self, request, context):
+        print("Received accusation: " + str(request))
+
+
 
     # Return the full history for a game so far if the player is allowed to see it
     def requestHistory(self, request, context):
