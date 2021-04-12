@@ -7,8 +7,8 @@ using TMPro;
 public class NetworkManager : MonoBehaviour
 {
     public TextMeshProUGUI logText;
-    // private string host = "clueless.ideologyhole.com:50051";
-    private string host = "localhost:50051";
+    private string host = "clueless.ideologyhole.com:50051";
+    // private string host = "localhost:50051";
     private Channel channel;
     private NetworkService.NetworkServiceClient client;
 
