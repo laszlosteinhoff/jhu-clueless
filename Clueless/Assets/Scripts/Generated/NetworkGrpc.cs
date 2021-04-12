@@ -20,6 +20,7 @@ public static partial class NetworkService
   static readonly grpc::Marshaller<global::DisproveRequest> __Marshaller_DisproveRequest = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::DisproveRequest.Parser.ParseFrom);
   static readonly grpc::Marshaller<global::HistoryRequest> __Marshaller_HistoryRequest = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::HistoryRequest.Parser.ParseFrom);
   static readonly grpc::Marshaller<global::GameHistory> __Marshaller_GameHistory = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::GameHistory.Parser.ParseFrom);
+  static readonly grpc::Marshaller<global::Accusation> __Marshaller_Accusation = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::Accusation.Parser.ParseFrom);
 
   static readonly grpc::Method<global::CreateGameRequest, global::GameUpdate> __Method_createGame = new grpc::Method<global::CreateGameRequest, global::GameUpdate>(
       grpc::MethodType.ServerStreaming,
@@ -63,6 +64,13 @@ public static partial class NetworkService
       __Marshaller_HistoryRequest,
       __Marshaller_GameHistory);
 
+  static readonly grpc::Method<global::Accusation, global::Acknowledgement> __Method_accuse = new grpc::Method<global::Accusation, global::Acknowledgement>(
+      grpc::MethodType.Unary,
+      __ServiceName,
+      "accuse",
+      __Marshaller_Accusation,
+      __Marshaller_Acknowledgement);
+
   /// <summary>Service descriptor</summary>
   public static global::Google.Protobuf.Reflection.ServiceDescriptor Descriptor
   {
@@ -99,6 +107,11 @@ public static partial class NetworkService
     }
 
     public virtual global::System.Threading.Tasks.Task<global::GameHistory> requestHistory(global::HistoryRequest request, grpc::ServerCallContext context)
+    {
+      throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
+    }
+
+    public virtual global::System.Threading.Tasks.Task<global::Acknowledgement> accuse(global::Accusation request, grpc::ServerCallContext context)
     {
       throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
     }
@@ -208,6 +221,22 @@ public static partial class NetworkService
     {
       return CallInvoker.AsyncUnaryCall(__Method_requestHistory, null, options, request);
     }
+    public virtual global::Acknowledgement accuse(global::Accusation request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+    {
+      return accuse(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+    }
+    public virtual global::Acknowledgement accuse(global::Accusation request, grpc::CallOptions options)
+    {
+      return CallInvoker.BlockingUnaryCall(__Method_accuse, null, options, request);
+    }
+    public virtual grpc::AsyncUnaryCall<global::Acknowledgement> accuseAsync(global::Accusation request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+    {
+      return accuseAsync(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+    }
+    public virtual grpc::AsyncUnaryCall<global::Acknowledgement> accuseAsync(global::Accusation request, grpc::CallOptions options)
+    {
+      return CallInvoker.AsyncUnaryCall(__Method_accuse, null, options, request);
+    }
     /// <summary>Creates a new instance of client from given <c>ClientBaseConfiguration</c>.</summary>
     protected override NetworkServiceClient NewInstance(ClientBaseConfiguration configuration)
     {
@@ -225,7 +254,8 @@ public static partial class NetworkService
         .AddMethod(__Method_startGame, serviceImpl.startGame)
         .AddMethod(__Method_submitMove, serviceImpl.submitMove)
         .AddMethod(__Method_disprove, serviceImpl.disprove)
-        .AddMethod(__Method_requestHistory, serviceImpl.requestHistory).Build();
+        .AddMethod(__Method_requestHistory, serviceImpl.requestHistory)
+        .AddMethod(__Method_accuse, serviceImpl.accuse).Build();
   }
 
   /// <summary>Register service method with a service binder with or without implementation. Useful when customizing the  service binding logic.
@@ -240,6 +270,7 @@ public static partial class NetworkService
     serviceBinder.AddMethod(__Method_submitMove, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Move, global::Acknowledgement>(serviceImpl.submitMove));
     serviceBinder.AddMethod(__Method_disprove, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::DisproveRequest, global::Acknowledgement>(serviceImpl.disprove));
     serviceBinder.AddMethod(__Method_requestHistory, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::HistoryRequest, global::GameHistory>(serviceImpl.requestHistory));
+    serviceBinder.AddMethod(__Method_accuse, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Accusation, global::Acknowledgement>(serviceImpl.accuse));
   }
 
 }

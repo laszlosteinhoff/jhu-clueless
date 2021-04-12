@@ -44,6 +44,11 @@ class NetworkServiceStub(object):
                 request_serializer=Network__pb2.HistoryRequest.SerializeToString,
                 response_deserializer=Network__pb2.GameHistory.FromString,
                 )
+        self.accuse = channel.unary_unary(
+                '/NetworkService/accuse',
+                request_serializer=Network__pb2.Accusation.SerializeToString,
+                response_deserializer=Network__pb2.Acknowledgement.FromString,
+                )
 
 
 class NetworkServiceServicer(object):
@@ -85,6 +90,12 @@ class NetworkServiceServicer(object):
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
+    def accuse(self, request, context):
+        """Missing associated documentation comment in .proto file."""
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
 
 def add_NetworkServiceServicer_to_server(servicer, server):
     rpc_method_handlers = {
@@ -117,6 +128,11 @@ def add_NetworkServiceServicer_to_server(servicer, server):
                     servicer.requestHistory,
                     request_deserializer=Network__pb2.HistoryRequest.FromString,
                     response_serializer=Network__pb2.GameHistory.SerializeToString,
+            ),
+            'accuse': grpc.unary_unary_rpc_method_handler(
+                    servicer.accuse,
+                    request_deserializer=Network__pb2.Accusation.FromString,
+                    response_serializer=Network__pb2.Acknowledgement.SerializeToString,
             ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
@@ -227,5 +243,22 @@ class NetworkService(object):
         return grpc.experimental.unary_unary(request, target, '/NetworkService/requestHistory',
             Network__pb2.HistoryRequest.SerializeToString,
             Network__pb2.GameHistory.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+
+    @staticmethod
+    def accuse(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(request, target, '/NetworkService/accuse',
+            Network__pb2.Accusation.SerializeToString,
+            Network__pb2.Acknowledgement.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)

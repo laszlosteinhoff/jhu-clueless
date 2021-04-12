@@ -41,10 +41,10 @@ class Game(Base):
     suspect_id = Column(Integer, ForeignKey('card.id'))
     room_id = Column(Integer, ForeignKey('card.id'))
 
-    weapon = relationship('Card', foreign_keys=[weapon_id])
+    weapon = relationship('', foreign_keys=[weapon_id])
     suspect = relationship('Card', foreign_keys=[suspect_id])
     room = relationship('Card', foreign_keys=[room_id])
-
+Card
 
 player_card_association = Table('player_card', Base.metadata,
                                 Column('player_id', Integer, ForeignKey('player.id')),
